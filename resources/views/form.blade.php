@@ -5,32 +5,38 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dodaj nowego ucznia</div>
+                    <div class="card-header">Dodaj nowego kandydata</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('uczen.store') }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('uczen.store') }}">
                             @csrf
-                            {{$errors}}
+                            
 
-                            <h3 class="mt-4">Kierunek</h3>
+                            <h3 class="mt-4 bold">*Kierunek</h3>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" @if(!empty(old('programista'))) checked @endif name="programista" id="inlineCheckbox1" value="option1">
                                 <label class="form-check-label" for="inlineCheckbox1" >Programista</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" @if(!empty(old('informatyk'))) checked @endif name="informatyk" id="inlineCheckbox1" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">Informatyk</label>
+                                <input class="form-check-input" type="checkbox" @if(!empty(old('informatyk'))) checked @endif name="informatyk" id="inlineCheckbox2" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox2">Informatyk</label>
                             </div>
-                            <h3 class="mt-4">Dane Ucznia</h3>
+
+                            @if ($errors->has('kierunek'))
+                                <div class="text-danger" role="alert">
+                                    <strong>{{ $errors->first('kierunek') }}</strong>
+                                </div>
+                            @endif                            
+                            <h3 class="mt-4">Dane Kandydata</h3>
 
                             <div class="form-group row mt-3">
-                                <label for="imie"  class="col-md-4 col-form-label text-md-right">Imię</label>
+                                <label for="imie"  class="col-md-4 col-form-label text-md-right bold">*Imię</label>
                                 <div class="col-md-6">
                                     <input id="imie" type="text" class="form-control" name="imie" value="{{old('imie')}}"  autofocus>
                                 </div>
                             </div>
                             @if ($errors->has('imie'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('imie') }}</strong>
                                 </span>
                             @endif
@@ -41,7 +47,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('imie2'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('imie2') }}</strong>
                                 </span>
                             @endif                            
@@ -55,7 +61,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('nazwisko'))
-                                <span class="color-red" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('nazwisko') }}</strong>
                                 </span>
                             @endif                            
@@ -69,7 +75,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('telefon'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('telefon') }}</strong>
                                 </span>
                             @endif                            
@@ -83,7 +89,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif                            
@@ -96,7 +102,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('data_urodzenia'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('data_urodzenia') }}</strong>
                                 </span>
                             @endif                            
@@ -109,7 +115,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('miejsce_urodzenia'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('miejsce_urodzenia') }}</strong>
                                 </span>
                             @endif                            
@@ -122,7 +128,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('pesel'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('pesel') }}</strong>
                                 </span>
                             @endif                            
@@ -137,10 +143,16 @@
                                 </div>
                             </div>
                             @if ($errors->has('adres_zamieszkania'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('adres_zamieszkania') }}</strong>
                                 </span>
                             @endif                            
+                            <div class="form-group row mt-3">
+                                <label for="foto" class="col-md-4 col-form-label text-md-right">Zdjęcie do legitymacji</label>
+                                <div class="col-md-6">
+                                    <input id="foto" type="file" class="form-control" name="foto" accept=".jpg, .jpeg" value="{{old('foto')}}">
+                                </div>
+                            </div>
 
 
                             <!-- Pozostałe pola formularza -->
@@ -154,7 +166,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('imie_nazwisko_matki'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('imie_nazwisko_matki') }}</strong>
                                 </span>
                             @endif                            
@@ -169,7 +181,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('telefon_matki'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('telefon_matki') }}</strong>
                                 </span>
                             @endif                            
@@ -184,7 +196,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('email_matki'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('email_matki') }}</strong>
                                 </span>
                             @endif                            
@@ -199,7 +211,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('adres_zamieszkania_matki'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('adres_zamieszkania_matki') }}</strong>
                                 </span>
                             @endif                            
@@ -216,7 +228,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('imie_nazwisko_ojca'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('imie_nazwisko_ojca') }}</strong>
                                 </span>
                             @endif                            
@@ -233,7 +245,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('telefon_ojca'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('telefon_ojca') }}</strong>
                                 </span>
                             @endif                            
@@ -250,7 +262,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('email_ojca'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('email_ojca') }}</strong>
                                 </span>
                             @endif                            
@@ -267,7 +279,7 @@
                                 </div>
                             </div>
                             @if ($errors->has('adres_zamieszkania_ojca'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('adres_zamieszkania_ojca') }}</strong>
                                 </span>
                             @endif                            
