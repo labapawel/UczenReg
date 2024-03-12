@@ -21,15 +21,29 @@ return new class extends Migration
             $table->date('data_urodzenia')->nullable();
             $table->string('pesel')->nullable();
             $table->string('miejsce_urodzenia')->nullable();
-            $table->string('adres_zamieszkania')->nullable();
+            $table->string('adres_zam_kodpocz', 10)->nullable();
+            $table->string('adres_zam_miasto',100)->nullable();
+            $table->string('adres_zam_ulica', 100)->nullable();
+            $table->string('adres_zam_numdom', 10)->nullable();
+            $table->string('adres_zam_nummie', 10)->nullable();
             $table->string('imie_nazwisko_matki')->nullable();
             $table->string('imie_nazwisko_ojca')->nullable();
             $table->string('telefon_matki')->nullable();
             $table->string('telefon_ojca')->nullable();
             $table->string('email_matki')->nullable();
             $table->string('email_ojca')->nullable();
-            $table->string('adres_zamieszkania_matki')->nullable();
-            $table->string('adres_zamieszkania_ojca')->nullable();
+
+            $table->string('adres_zam_kodpocz_matki', 10)->nullable();
+            $table->string('adres_zam_miasto_matki',100)->nullable();
+            $table->string('adres_zam_ulica_matki', 100)->nullable();
+            $table->string('adres_zam_numdom_matki', 10)->nullable();
+            $table->string('adres_zam_nummie_matki', 10)->nullable();
+
+            $table->string('adres_zam_kodpocz_ojca', 10)->nullable();
+            $table->string('adres_zam_miasto_ojca',100)->nullable();
+            $table->string('adres_zam_ulica_ojca', 100)->nullable();
+            $table->string('adres_zam_numdom_ojca', 10)->nullable();
+            $table->string('adres_zam_nummie_ojca', 10)->nullable();
             $table->timestamps();
         });
     }
