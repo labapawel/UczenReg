@@ -141,131 +141,36 @@
 
                             <!-- Pozostałe pola formularza -->
                             <h3 class="mt-4">Dane Matki/opiekunki</h3>
-                            <div class="form-group row mt-3">
-                                <label for="imie_nazwisko_matki" class="col-md-4 col-form-label text-md-right">Imię i nazwisko matki</label>
-                                <div class="col-md-6">
-                                    <input id="imie_nazwisko_matki" type="text" class="form-control" name="imie_nazwisko_matki" value="{{old('imie_nazwisko_matki')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('imie_nazwisko_matki'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('imie_nazwisko_matki') }}</strong>
-                                </span>
-                            @endif                            
 
+                            @include("inc.input", ['id'=>'imie_nazwisko_matki','title'=>"Imię i nazwisko", 'req'=>false, 'errors'=>$errors, 'value' => $dane['imie_nazwisko_matki'] ?? null])
+                            @include("inc.input", ['id'=>'telefon_matki','title'=>"Telefon", 'req'=>false, 'errors'=>$errors, 'value' => $dane['telefon_matki'] ?? null])
+                            @include("inc.input", ['id'=>'email_matki','title'=>"Email", 'req'=>false, 'errors'=>$errors, 'value' => $dane['email_matki'] ?? null])
 
-                            <!-- Pozostałe pola formularza -->
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="telefon_matki" class="col-md-4 col-form-label text-md-right">Telefon matki</label>
-                                <div class="col-md-6">
-                                    <input id="telefon_matki" type="text" class="form-control" name="telefon_matki" value="{{old('telefon_matki')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('telefon_matki'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('telefon_matki') }}</strong>
-                                </span>
-                            @endif                            
+                            @include("inc.input", ['id'=>'adres_kodpocz_matki','title'=>"Kod pocztowy", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_kodpocz_matki'] ?? null])
+                            @include("inc.input", ['id'=>'adres_ulica_matki','title'=>"Ulica", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_ulica_matki'] ?? null])
+                            @include("inc.input", ['id'=>'adres_nrdom_matki','title'=>"Numer domu", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_nrdom_matki'] ?? null])
+                            @include("inc.input", ['id'=>'adres_nrmie_matki','title'=>"Numer mieszkania", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_nrmie_matki'] ?? null])
+                            @include("inc.input", ['id'=>'adres_miasto_matki','title'=>"Miasto", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_miasto_matki'] ?? null])
 
-
-                            <!-- Pozostałe pola formularza -->
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="email_matki" class="col-md-4 col-form-label text-md-right">Email matki</label>
-                                <div class="col-md-6">
-                                    <input id="email_matki" type="email" class="form-control" name="email_matki" value="{{old('email_matki')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('email_matki'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('email_matki') }}</strong>
-                                </span>
-                            @endif                            
-
-
-                            <!-- Pozostałe pola formularza -->
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="adres_zamieszkania_matki" class="col-md-4 col-form-label text-md-right">Adres zamieszkania matki</label>
-                                <div class="col-md-6">
-                                    <input id="adres_zamieszkania_matki" type="text" class="form-control" name="adres_zamieszkania_matki" value="{{old('adres_zamieszkania_matki')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('adres_zamieszkania_matki'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('adres_zamieszkania_matki') }}</strong>
-                                </span>
-                            @endif                            
 
 
                             <!-- Pozostałe pola formularza -->
 
                             <h3 class="mt-4">Dane Ojca/opiekuna</h3>
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="imie_nazwisko_ojca" class="col-md-4 col-form-label text-md-right">Imię i nazwisko ojca</label>
-                                <div class="col-md-6">
-                                    <input id="imie_nazwisko_ojca" type="text" class="form-control" name="imie_nazwisko_ojca" value="{{old('imie_nazwisko_ojca')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('imie_nazwisko_ojca'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('imie_nazwisko_ojca') }}</strong>
-                                </span>
-                            @endif                            
+
+                            @include("inc.input", ['id'=>'imie_nazwisko_ojca','title'=>"Imię i nazwisko", 'req'=>false, 'errors'=>$errors, 'value' => $dane['imie_nazwisko_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'telefon_ojca','title'=>"Telefon", 'req'=>false, 'errors'=>$errors, 'value' => $dane['telefon_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'email_ojca','title'=>"Email", 'req'=>false, 'errors'=>$errors, 'value' => $dane['email_ojca'] ?? null])
+
+                            @include("inc.input", ['id'=>'adres_kodpocz_ojca','title'=>"Kod pocztowy ", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_kodpocz_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'adres_ulica_ojca','title'=>"Ulica", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_ulica_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'adres_nrdom_ojca','title'=>"Numer domu", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_nrdom_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'adres_nrmie_ojca','title'=>"Numer mieszkania", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_nrmie_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'adres_miasto_ojca','title'=>"Miasto", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_miasto_ojca'] ?? null])
+                        
 
 
-                            <!-- Pozostałe pola formularza -->
-
-
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="telefon_ojca" class="col-md-4 col-form-label text-md-right">Telefon ojca</label>
-                                <div class="col-md-6">
-                                    <input id="telefon_ojca" type="text" class="form-control" name="telefon_ojca" value="{{old('telefon_ojca')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('telefon_ojca'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('telefon_ojca') }}</strong>
-                                </span>
-                            @endif                            
-
-
-                            <!-- Pozostałe pola formularza -->
-
-
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="email_ojca" class="col-md-4 col-form-label text-md-right">Email ojca</label>
-                                <div class="col-md-6">
-                                    <input id="email_ojca" type="email" class="form-control" name="email_ojca" value="{{old('email_ojca')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('email_ojca'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('email_ojca') }}</strong>
-                                </span>
-                            @endif                            
-
-
-                            <!-- Pozostałe pola formularza -->
-
-
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="adres_zamieszkania_ojca" class="col-md-4 col-form-label text-md-right">Adres zamieszkania ojca</label>
-                                <div class="col-md-6">
-                                    <input id="adres_zamieszkania_ojca" type="text" class="form-control" name="adres_zamieszkania_ojca" value="{{old('adres_zamieszkania_ojca')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('adres_zamieszkania_ojca'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('adres_zamieszkania_ojca') }}</strong>
-                                </span>
-                            @endif                            
-@include('reg')
+                            @include('reg')
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3 mb-0">
