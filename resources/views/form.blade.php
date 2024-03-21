@@ -40,22 +40,12 @@
                                     <strong>{{ $errors->first('imie') }}</strong>
                                 </span>
                             @endif
-                            <div class="form-group row mt-3">
-                                <label for="imie2" class="col-md-4 col-form-label text-md-right">Drugie imię</label>
-                                <div class="col-md-6">
-                                    <input id="imie2" type="text" class="form-control" name="imie2" value="{{old('imie2')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('imie2'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('imie2') }}</strong>
-                                </span>
-                            @endif                            
+                            @include("inc.input", ['id'=>'imie2','title'=>"Drugie imie", 'req'=>false, 'errors'=>$errors])
 
                             <!-- Kolejne pola formularza -->
                             
                             <div class="form-group row mt-3">
-                                <label for="nazwisko" class="col-md-4 col-form-label text-md-right">Nazwisko</label>
+                                <label for="nazwisko" class="col-md-4 col-form-label text-md-right bold">*Nazwisko</label>
                                 <div class="col-md-6">
                                     <input id="nazwisko" type="text" class="form-control" name="nazwisko" value="{{old('nazwisko')}}" >
                                 </div>
@@ -69,7 +59,7 @@
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3">
-                                <label for="telefon" class="col-md-4 col-form-label text-md-right">Telefon</label>
+                                <label for="telefon" class="col-md-4 col-form-label text-md-right bold">*Telefon</label>
                                 <div class="col-md-6">
                                     <input id="telefon" type="text" class="form-control" name="telefon" value="{{old('telefon')}}">
                                 </div>
@@ -83,7 +73,7 @@
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right bold">*Email</label>
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}">
                                 </div>
@@ -96,7 +86,7 @@
 
                             <!-- Pozostałe pola formularza -->
                             <div class="form-group row mt-3">
-                                <label for="data_urodzenia" class="col-md-4 col-form-label text-md-right">Data urodzenia</label>
+                                <label for="data_urodzenia" class="col-md-4 col-form-label text-md-right bold">*Data urodzenia</label>
                                 <div class="col-md-6">
                                     <input id="data_urodzenia" type="date" class="form-control" name="data_urodzenia" value="{{old('data_urodzenia')}}">
                                 </div>
@@ -109,7 +99,7 @@
 
 
                             <div class="form-group row mt-3">
-                                <label for="miejsce_urodzenia" class="col-md-4 col-form-label text-md-right">Miejsce urodzenia</label>
+                                <label for="miejsce_urodzenia" class="col-md-4 col-form-label text-md-right bold">*Miejsce urodzenia</label>
                                 <div class="col-md-6">
                                     <input id="miejsce_urodzenia" type="text" class="form-control" name="miejsce_urodzenia" value="{{old('miejsce_urodzenia')}}">
                                 </div>
@@ -122,7 +112,7 @@
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3">
-                                <label for="pesel" class="col-md-4 col-form-label text-md-right">PESEL</label>
+                                <label for="pesel" class="col-md-4 col-form-label text-md-right bold">*PESEL</label>
                                 <div class="col-md-6">
                                     <input id="pesel" type="text" class="form-control" name="pesel" value="{{old('pesel')}}">
                                 </div>
@@ -135,18 +125,10 @@
 
                             <!-- Pozostałe pola formularza -->
 
-                            <!-- Pozostałe pola formularza -->
-                            <div class="form-group row mt-3">
-                                <label for="adres_zamieszkania" class="col-md-4 col-form-label text-md-right">Adres zamieszkania</label>
-                                <div class="col-md-6">
-                                    <input id="adres_zamieszkania" type="text" class="form-control" name="adres_zamieszkania" value="{{old('adres_zamieszkania')}}">
-                                </div>
-                            </div>
-                            @if ($errors->has('adres_zamieszkania'))
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $errors->first('adres_zamieszkania') }}</strong>
-                                </span>
-                            @endif                            
+
+   @include("inc.input", ['id'=>'kodpocz','title'=>"Kod pocztowy", 'req'=>true, 'errors'=>$errors])
+   @include("inc.input", ['id'=>'miasto','title'=>"Miasto", 'req'=>true, 'errors'=>$errors])
+
                             <div class="form-group row mt-3">
                                 <label for="foto" class="col-md-4 col-form-label text-md-right">Zdjęcie do legitymacji</label>
                                 <div class="col-md-6">
@@ -283,8 +265,7 @@
                                     <strong>{{ $errors->first('adres_zamieszkania_ojca') }}</strong>
                                 </span>
                             @endif                            
-
-
+@include('reg')
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3 mb-0">

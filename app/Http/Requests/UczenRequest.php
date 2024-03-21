@@ -24,6 +24,8 @@ class UczenRequest extends FormRequest
         $form = $this->only(['informatyk','programista','pesel','data_urodzenia']);
         $keys = array_keys($form);
         $arr = [
+            'regulamin' => 'required',
+            'regulamin_elek' => 'required',
             'imie' => 'required|alpha|max:255',
             'imie2' => 'nullable|alpha|max:255',
             'nazwisko' => 'required|alpha|max:255',

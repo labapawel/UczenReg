@@ -133,7 +133,7 @@ return [
     'prohibited_unless' => 'Pole :attribute jest zabronione, chyba że :other jest w :values.',
     'prohibits' => 'Pole :attribute zabrania obecności :other.',
     'regex' => 'Format pola :attribute jest nieprawidłowy.',
-    'required' => 'Pole :attribute jest wymagane.',
+    'required' => 'Pole jest wymagane.',
     'required_array_keys' => 'Pole :attribute musi zawierać klucze dla: :values.',
     'required_if' => 'Pole :attribute jest wymagane, gdy :other jest :value.',
     'required_if_accepted' => 'Pole :attribute jest wymagane, gdy :other jest zaakceptowane.',
