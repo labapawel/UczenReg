@@ -32,15 +32,30 @@ class UczenRequest extends FormRequest
             'data_urodzenia' => 'required|date',
             'pesel' => 'required|numeric|max:11', // Poprawne PESEL ma 11 cyfr
             'miejsce_urodzenia' => 'required|string|max:255',
-            'adres_zamieszkania' => 'required|string|max:255',
+            'adres_kodpocz' => 'required|string|max:10',
+            'adres_ulica' => 'required|string|max:70',
+            'adres_nrdom' => 'required|string|max:10',
+            'adres_nrmie' => 'nullable|string|max:10',
+            'adres_miasto' => 'required|string|max:255',
+
             'imie_nazwisko_matki' => 'nullable|string|max:255',
             'imie_nazwisko_ojca' => 'nullable|string|max:255',
             'telefon_matki' => 'nullable|numeric|max:255',
             'telefon_ojca' => 'nullable|numeric|max:255',
             'email_matki' => 'nullable|email|max:255',
             'email_ojca' => 'nullable|email|max:255',
-            'adres_zamieszkania_matki' => 'nullable|string|max:255',
-            'adres_zamieszkania_ojca' => 'nullable|string|max:255',
+
+            'adres_kodpocz_matki' => 'required|string|max:10',
+            'adres_ulica_matki' => 'required|string|max:70',
+            'adres_nrdom_matki' => 'required|string|max:10',
+            'adres_nrmie_matki' => 'nullable|string|max:10',
+            'adres_miasto_matki' => 'required|string|max:255',
+
+            'adres_kodpocz_ojca' => 'required|string|max:10',
+            'adres_ulica_ojca' => 'required|string|max:70',
+            'adres_nrdom_ojca' => 'required|string|max:10',
+            'adres_nrmie_ojca' => 'nullable|string|max:10',
+            'adres_miasto_ojca' => 'required|string|max:255',
         ];
 
         if (!(in_array('informatyk', $keys) || in_array('programista', $keys))){
