@@ -23,7 +23,7 @@ services:
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     volumes:
-      - uczenrej-vol:/var/lib/mysql
+      - uczenrej-lara-vol:/var/lib/mysql
     networks:
       - uczenrej-net
 
