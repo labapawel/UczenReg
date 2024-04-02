@@ -24,15 +24,39 @@ use SleepingOwl\Admin\Navigation\Page;
 return [
     [
         'title' => 'Dashboard',
+        'priority' => 99,
         'icon'  => 'fas fa-tachometer-alt',
         'url'   => route('admin.dashboard'),
     ],
 
-    [
-        'title' => 'Information',
-        'icon'  => 'fas fa-info-circle',
-        'url'   => route('admin.information'),
-    ],
+    // [
+    //     'title' => 'Information',
+    //     'icon'  => 'fas fa-info-circle',
+    //     'url'   => route('admin.information'),
+    // ],
+    (new Page(\App\Models\Uczen::class))
+               ->setTitle("Uczniowie")
+               ->setPriority(100)
+               ->setIcon('fas fa-users'),
+
+    (new Page(\App\Models\User::class))
+               ->setTitle("Użytkownicy")
+               ->setPriority(110)
+               ->setIcon('fas fa-users'),
+
+            [
+                'title' => 'Wyjście',
+                'priority' => 150,
+                'icon'  => 'fas fa-door-closed',
+                'url'   => route('admin.logout'),
+            ],
+        
+        
+            //    ->setUrl('users'),
+    // [
+    //     'title' => "Uczniowie",
+    //     'model' => \App\Models\Uczen::class
+    // ]
 
     // Examples
     // [

@@ -46,6 +46,8 @@ return new class extends Migration
             $table->string('adres_nrdom_ojca',10)->nullable();
             $table->string('adres_nrmie_ojca',10)->nullable();
             $table->string('adres_miasto_ojca')->nullable();
+            $table->string('mddata')->nullable();
+            $table->string('komentatz')->nullable();
             $table->timestamps();
         });
     }

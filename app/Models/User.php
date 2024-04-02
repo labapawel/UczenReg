@@ -33,6 +33,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function setPassAttribute($val)
+    {
+        if(!empty($val)){
+            $this->attributes['password']=\Hash::make($val);
+        }
+        unset($this->attributes['pass']);
+    }
+    
     /**
      * The attributes that should be cast.
      *
@@ -42,4 +50,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function isAdmin() {
+        return true;
+    }
 }

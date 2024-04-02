@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 Route::post('/uczen', [\App\Http\Controllers\UczenController::class, 'store'])->name('uczen.store');
 Route::get('/uczen/{id}', [\App\Http\Controllers\UczenController::class, 'index'])->name('uczen.data');
+Route::get('/foto/{id}', [\App\Http\Controllers\UczenController::class, 'foto'])->name('uczen.foto')
+    ->middleware(['auth']);
+Route::get('storage/app/foto/{id}', [\App\Http\Controllers\UczenController::class, 'foto'])->name('uczen.foto1')
+    ->middleware(['auth']);
 
 Auth::routes(['login' => true, 'reset' => false, 'verify' => false,'register'=>false]);
 

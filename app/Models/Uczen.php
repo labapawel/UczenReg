@@ -40,8 +40,20 @@ class Uczen extends Model
         'adres_nrdom_ojca',
         'adres_nrmie_ojca',
         'adres_miasto_ojca',
+        'komentarz',
+        'mddata',
     ];
 
-   
+    public function save($attr = []){
+
+        if($this->getOriginal('img') != $this->img && $this->getOriginal('img')){
+            $this->img = str_replace('../storage/app/','', $this->img);
+            \Storage::delete("".$this->getOriginal('img'));
+        }
+        
+
+        parent::save($attr);
+
+    }
 
     }
