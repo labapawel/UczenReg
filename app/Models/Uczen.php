@@ -42,8 +42,6 @@ class Uczen extends Model
         'adres_miasto_ojca',
     ];
 
-    public function setKierunekAttribute($value){
-        dd($value);        
-    }
+   
 
     }

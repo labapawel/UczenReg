@@ -14,11 +14,11 @@
 
                             <h3 class="mt-4 bold">*Kierunek</h3>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" @if(!empty(old('programista'))) checked @endif name="programista" id="inlineCheckbox1" value="option1">
+                                <input class="form-check-input" type="checkbox" @if(!empty(old('programista'))) checked @endif name="programista" id="inlineCheckbox1" value="1">
                                 <label class="form-check-label" for="inlineCheckbox1" >Programista</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" @if(!empty(old('informatyk'))) checked @endif name="informatyk" id="inlineCheckbox2" value="option1">
+                                <input class="form-check-input" type="checkbox" @if(!empty(old('informatyk'))) checked @endif name="informatyk" id="inlineCheckbox2" value="2">
                                 <label class="form-check-label" for="inlineCheckbox2">Informatyk</label>
                             </div>
 
