@@ -1,4 +1,4 @@
-<p>
+<p class="mt-5">
     <input type="checkbox" name="regulamin" id="">
     @if ($errors->has('regulamin'))
                                 <span class="text-danger" role="alert">

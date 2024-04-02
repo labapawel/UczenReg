@@ -22,40 +22,44 @@ class UczenRequest extends FormRequest
     public function rules(): array
     {
         $ojciec = [
-            'imie_nazwisko_ojca' => 'nullable|string|max:255',
-            'telefon_ojca' => 'nullable|string|max:255',
-            'email_ojca' => 'nullable|email|max:255',
-            'adres_kodpocz_ojca' => 'nullable|string|max:10',
-            'adres_ulica_ojca' => 'nullable|string|max:70',
+            'imie_nazwisko_ojca' => 'required|string|max:255',
+            'telefon_ojca' => 'required|string|max:255',
+            'email_ojca' => 'required|email|max:255',
+            'adres_kodpocz_ojca' => 'required|string|max:10',
+            'adres_ulica_ojca' => 'required|string|max:70',
             'adres_nrdom_ojca' => 'nullable|string|max:10',
-            'adres_miasto_ojca' => 'nullable|string|max:255'
+            'adres_miasto_ojca' => 'required|string|max:255'
         ];
 
         $matka = [
-            'imie_nazwisko_matki' => 'nullable|string|max:255',
-            'telefon_matki' => 'nullable|string|max:255',
-            'email_matki' => 'nullable|email|max:255',
-            'adres_kodpocz_matki' => 'nullable|string|max:10',
-            'adres_ulica_matki' => 'nullable|string|max:70',
-            'adres_nrdom_matki' => 'nullable|string|max:10',
-            'adres_miasto_matki' => 'nullable|string|max:255'
+            'imie_nazwisko_matki' => 'required|string|max:255',
+            'telefon_matki' => 'required|string|max:255',
+            'email_matki' => 'required|email|max:255',
+            'adres_kodpocz_matki' => 'required|string|max:10',
+            'adres_ulica_matki' => 'required|string|max:70',
+            'adres_nrdom_matki' => 'required|string|max:10',
+            'adres_nrmie_matki' => 'nullable|string|max:10',
+            'adres_miasto_matki' => 'required|string|max:255'
         ];
 
-        $form = $this->only(['informatyk','programista','pesel','data_urodzenia','imie_nazwisko_matki','imie_nazwisko_ojca']);
+        $form = $this->all();
         $keys = array_keys($form);
         $arr = [
             'imie' => 'required|string|max:255',
             'imie2' => 'nullable|string|max:255',
             'nazwisko' => 'required|string|max:255',
-            'telefon' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'data_urodzenia' => 'nullable|date',
-            'pesel' => 'nullable|string|max:255',
-            'miejsce_urodzenia' => 'nullable|string|max:255',
-            'adres_kodpocz' => 'nullable|string|max:10',
-            'adres_ulica' => 'nullable|string|max:70',
-            'adres_nrdom' => 'nullable|string|max:10',
-            'adres_miasto' => 'nullable|string|max:255'
+            'telefon' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'data_urodzenia' => 'required|date',
+            'pesel' => 'required|string|max:11',
+            'miejsce_urodzenia' => 'required|string|max:255',
+            'adres_kodpocz' => 'required|string|max:10',
+            'adres_ulica' => 'required|string|max:70',
+            'adres_nrdom' => 'required|string|max:10',
+            'adres_nrmie' => 'nullable|string|max:10',
+            'adres_miasto' => 'required|string|max:255',
+            'regulamin' => 'required|string|max:10',
+            'regulamin_elek' => 'required|string|max:10'
 
         ];
 
@@ -63,11 +67,13 @@ class UczenRequest extends FormRequest
         if (!(in_array('informatyk', $keys) || in_array('programista', $keys))){
             $arr['kierunek']='required';    
         }
-        if(isset($keys['imie_nazwisko_ojca']) && !empty(keys['imie_nazwisko_ojca']))
+        if(isset($form['imie_nazwisko_ojca']) && !empty($form['imie_nazwisko_ojca']))
                 $arr = array_merge($arr, $ojciec);
-        if(isset($keys['imie_nazwisko_matki']) && !empty(keys['imie_nazwisko_matki']))
+        if(isset($form['imie_nazwisko_matki']) && !empty($form['imie_nazwisko_matki']))
                 $arr = array_merge($arr, $matka);
-
+        if(empty($form['imie_nazwisko_matki']) &&  empty($form['imie_nazwisko_ojca']))
+                $arr = array_merge($arr, $matka);
+        //dd($keys, $arr, $form);
         return $arr;
     }
 }

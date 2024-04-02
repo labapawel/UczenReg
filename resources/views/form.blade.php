@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Dodaj nowego kandydata</div>
 
@@ -30,7 +30,7 @@
                             <h3 class="mt-4">Dane Kandydata</h3>
 
                             <div class="form-group row mt-3">
-                                <label for="imie"  class="col-md-4 col-form-label text-md-right bold">*Imię</label>
+                                <label for="imie"  class="col-md-4 col-form-label text-md-right bold">* Imię</label>
                                 <div class="col-md-6">
                                     <input id="imie" type="text" class="form-control" name="imie" value="{{old('imie')}}"  autofocus>
                                 </div>
@@ -45,7 +45,7 @@
                             <!-- Kolejne pola formularza -->
                             
                             <div class="form-group row mt-3">
-                                <label for="nazwisko" class="col-md-4 col-form-label text-md-right bold">*Nazwisko</label>
+                                <label for="nazwisko" class="col-md-4 col-form-label text-md-right bold">* Nazwisko</label>
                                 <div class="col-md-6">
                                     <input id="nazwisko" type="text" class="form-control" name="nazwisko" value="{{old('nazwisko')}}" >
                                 </div>
@@ -59,7 +59,7 @@
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3">
-                                <label for="telefon" class="col-md-4 col-form-label text-md-right bold">*Telefon</label>
+                                <label for="telefon" class="col-md-4 col-form-label text-md-right bold">* Telefon</label>
                                 <div class="col-md-6">
                                     <input id="telefon" type="text" class="form-control" name="telefon" value="{{old('telefon')}}">
                                 </div>
@@ -73,7 +73,7 @@
                             <!-- Pozostałe pola formularza -->
 
                             <div class="form-group row mt-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-right bold">*Email</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right bold">* Email</label>
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="{{old('email')}}">
                                 </div>
@@ -121,13 +121,18 @@
                                 <span class="text-danger" role="alert">
                                     <strong>{{ $errors->first('pesel') }}</strong>
                                 </span>
-                            @endif                            
+                            @endif                  
+                            
+                            
 
                             <!-- Pozostałe pola formularza -->
 
+                            @include("inc.input", ['id'=>'adres_ulica','title'=>"Ulica", 'req'=>true, 'errors'=>$errors, 'value' => $dane['adres_ulica'] ?? null])
+                            @include("inc.input", ['id'=>'adres_nrdom','title'=>"Numer domu", 'req'=>true, 'errors'=>$errors, 'value' => $dane['adres_nrdom'] ?? null])
+                            @include("inc.input", ['id'=>'adres_nrmie','title'=>"Numer mieszkania", 'req'=>false, 'errors'=>$errors, 'value' => $dane['adres_nrmie'] ?? null])
 
-   @include("inc.input", ['id'=>'kodpocz','title'=>"Kod pocztowy", 'req'=>true, 'errors'=>$errors])
-   @include("inc.input", ['id'=>'miasto','title'=>"Miasto", 'req'=>true, 'errors'=>$errors])
+                            @include("inc.input", ['id'=>'adres_kodpocz','title'=>"Kod pocztowy", 'req'=>true, 'errors'=>$errors])
+                            @include("inc.input", ['id'=>'adres_miasto','title'=>"Miasto", 'req'=>true, 'errors'=>$errors])
 
                             <div class="form-group row mt-3">
                                 <label for="foto" class="col-md-4 col-form-label text-md-right">Zdjęcie do legitymacji</label>
@@ -142,7 +147,7 @@
                             <!-- Pozostałe pola formularza -->
                             <h3 class="mt-4">Dane Matki/opiekunki</h3>
 
-                            @include("inc.input", ['id'=>'imie_nazwisko_matki','title'=>"Imię i nazwisko", 'req'=>false, 'errors'=>$errors, 'value' => $dane['imie_nazwisko_matki'] ?? null])
+                            @include("inc.input", ['id'=>'imie_nazwisko_matki','title'=>"**Imię i nazwisko", 'req'=>false, 'errors'=>$errors, 'value' => $dane['imie_nazwisko_matki'] ?? null])
                             @include("inc.input", ['id'=>'telefon_matki','title'=>"Telefon", 'req'=>false, 'errors'=>$errors, 'value' => $dane['telefon_matki'] ?? null])
                             @include("inc.input", ['id'=>'email_matki','title'=>"Email", 'req'=>false, 'errors'=>$errors, 'value' => $dane['email_matki'] ?? null])
 
@@ -158,7 +163,7 @@
 
                             <h3 class="mt-4">Dane Ojca/opiekuna</h3>
 
-                            @include("inc.input", ['id'=>'imie_nazwisko_ojca','title'=>"Imię i nazwisko", 'req'=>false, 'errors'=>$errors, 'value' => $dane['imie_nazwisko_ojca'] ?? null])
+                            @include("inc.input", ['id'=>'imie_nazwisko_ojca','title'=>"**Imię i nazwisko", 'req'=>false, 'errors'=>$errors, 'value' => $dane['imie_nazwisko_ojca'] ?? null])
                             @include("inc.input", ['id'=>'telefon_ojca','title'=>"Telefon", 'req'=>false, 'errors'=>$errors, 'value' => $dane['telefon_ojca'] ?? null])
                             @include("inc.input", ['id'=>'email_ojca','title'=>"Email", 'req'=>false, 'errors'=>$errors, 'value' => $dane['email_ojca'] ?? null])
 
@@ -172,6 +177,10 @@
 
                             @include('reg')
                             <!-- Pozostałe pola formularza -->
+
+                            <p>* Pola wymagane</p>
+                            <p>** W przypadku podania danych dla Ojca lub Matki, pozostałe pola związane z danymi kontaktowymi będą wymagane</p>
+                            <p>Przynajmniej jeden opiekun jest wymagany</p>
 
                             <div class="form-group row mt-3 mb-0">
                                 <div class="col-md-6 offset-md-4">

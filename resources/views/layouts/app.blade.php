@@ -17,7 +17,15 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-
+    <header>
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4">
+                <a href="https://technikum.wsi.edu.pl"><img src="/164logo-01.png" alt="Prywatne Technikum Informatyczne"></a>
+            </div>
+        </div>
+    </div>
+    </header>
     <main class="py-4">
             @yield('content')
     </main>

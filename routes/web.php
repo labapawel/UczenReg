@@ -20,6 +20,5 @@ Route::get('/', function () {
 Route::post('/uczen', [\App\Http\Controllers\UczenController::class, 'store'])->name('uczen.store');
 Route::get('/uczen/{id}', [\App\Http\Controllers\UczenController::class, 'index'])->name('uczen.data');
 
-Auth::routes();
+Auth::routes(['login' => true, 'reset' => false, 'verify' => false,'register'=>false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
