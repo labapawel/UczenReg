@@ -29,11 +29,11 @@ services:
 
       
 volumes:
-  syspc-vol:
+  uczenrej-vol:
     driver: local
-  syspc-lara-vol:
+  uczenrej-lara-vol:
     driver: local
 
 networks:
-  syspc-net:
+  uczenrej-net:
       driver: bridge
