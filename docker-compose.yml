@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  php:
+    container_name: uczenrej
+    build:
+      context: .
+    ports:
+      - 443:443        
+    volumes:
+      - uczenrej-lara-vol:/var/www/storage
+    networks:
+      - uczenrej-net
+
+  database:
+    container_name: uczenrej-db
+    image: mariadb:latest
+    ports:
+      - 3306:${DB_PORT}
+    environment:  
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - uczenrej-vol:/var/lib/mysql
+    networks:
+      - uczenrej-net
+
+      
+volumes:
+  syspc-vol:
+    driver: local
+  syspc-lara-vol:
+    driver: local
+
+networks:
+  syspc-net:
+      driver: bridge
